@@ -7,9 +7,9 @@ export default function TSA() {
             <div className="outer-carousel">
         		<div className="carousel">
 
-                    <img src="/crousel/carousel1.jpg" />
-                    <img src="/crousel/carousel3.jpg" />
-                    <img src="/crousel/carousel2.jpg" />
+                    <img src="/carousel/carousel1.jpg" />
+                    <img src="/carousel/carousel3.jpg" />
+                    <img src="/carousel/carousel2.jpg" />
                 </div>
             </div>
         </>

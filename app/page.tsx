@@ -1,4 +1,6 @@
-import Image from 'next/image';
+'use client' // error-> Typeerror: super expression must either be. n next js 13 app directory is a server component.so simply add 'use client' in top of your file.
+
+import React from 'react';
 import NavBar from './navbar';
 import TSA from './tsa';
 
@@ -7,7 +9,7 @@ export default function Home() {
         <>
             <NavBar />
             <main>
-                <aside className    ="aside section-1">
+                <aside className="aside section-1">
                     <TSA />
                 </aside>
             </main>
