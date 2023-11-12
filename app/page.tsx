@@ -3,6 +3,7 @@
 import React from 'react';
 import NavBar from './navbar';
 import TSA from './tsa';
+import LatestRelease from './latestRelease';
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
             <main>
                 <aside className="aside section-1">
                     <TSA />
+                    <LatestRelease />
                 </aside>
             </main>
 
