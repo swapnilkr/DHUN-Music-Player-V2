@@ -1,3 +1,5 @@
+
+
 function LatestRelease() {
 
     let musicList = [
@@ -13,7 +15,7 @@ function LatestRelease() {
 			id: 2,
 			name: 'Summer Mood',
 			imageUrl: '/latest_release/Summer Mood.jfif',
-            audioUrl: '/media/latest_release/Summer Mood.mp3',
+            audioUrl: '/latest_release/Summer Mood.mp3',
 			releaseDate: 'May 2022',
 			duration: '02:35'
 		},
@@ -21,7 +23,7 @@ function LatestRelease() {
 			id: 3,
 			name: 'Power Ambient and Inspiring',
 			imageUrl: '/latest_release/Power Ambient and Inspiring.png',
-            audioUrl: '/media/latest_release/Power Ambient and Inspiring.mp3',
+            audioUrl: '/latest_release/Power Ambient and Inspiring.mp3',
 			releaseDate: 'Apr 2023',
 			duration: '02:55'
 		},
@@ -29,7 +31,7 @@ function LatestRelease() {
 			id: 4,
 			name: 'In the forest',
 			imageUrl: '/latest_release/In The Forest.jfif',
-            audioUrl: '/media/latest_release/In The Forest.mp3',
+            audioUrl: '/latest_release/In The Forest.mp3',
 			releaseDate: 'May 2023',
 			duration: '01:59'
 		},
@@ -37,7 +39,7 @@ function LatestRelease() {
 			id: 5,
 			name: 'Happy at Home',
 			imageUrl: '/latest_release/Happy at Home.png',
-            audioUrl: '/media/latest_release/Happy at Home.mp3',
+            audioUrl: '/latest_release/Happy at Home.mp3',
 			releaseDate: 'Sept 2023',
 			duration: '02:23'
 		},
@@ -45,7 +47,7 @@ function LatestRelease() {
 			id: 6,
 			name: 'Emotional Piano',
 			imageUrl: '/latest_release/Emotional Piano.jfif',
-            audioUrl: '/media/latest_release/Emotional Piano.mp3',
+            audioUrl: '/latest_release/Emotional Piano.mp3',
 			releaseDate: 'Jan 2023',
 			duration: '01:52'
 		},
