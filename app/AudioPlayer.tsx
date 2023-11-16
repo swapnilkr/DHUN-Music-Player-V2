@@ -27,7 +27,7 @@ function MusicPlayer(songs: any) {
 		// randomBgColor();
 		console.log(audioRef, audioRef.current)
 	}, [currentSongIndex])
-	
+
 	useEffect(() => {
 		audioRef.current.volume = volume;
 	}, [volume]);
@@ -105,6 +105,7 @@ function MusicPlayer(songs: any) {
 
 	// 	bg_colour.style.background = bgColor;
 	// }
+	
 
 	return (
 		<>
