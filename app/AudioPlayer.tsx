@@ -1,9 +1,10 @@
-import Reac, { MutableRefObject, useState, useEffect, useRef } from 'react';
+import React, { MutableRefObject, useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
+import { useMusicPlayer } from './MusicPlayerProvider';
 
 
 
-function MusicPlayer(songs: any) {
+function MusicPlayer(songs:any) {
 
 	const [currentSongIndex, setCurrentSongIndex] = useState(0);
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -14,6 +15,11 @@ function MusicPlayer(songs: any) {
 	const [totalTime, setTotalTime] = useState(0);
 
 	const audioRef = useRef() as MutableRefObject<HTMLAudioElement>;
+	const { musicList } = useMusicPlayer();
+
+	useEffect(()=> {
+		console.log("yes",musicList)
+	},[musicList])
 
 	useEffect(() => {
 		if (isPlaying) {
@@ -59,15 +65,15 @@ function MusicPlayer(songs: any) {
 		if (isShuffle) {
 			setCurrentSongIndex(getRandomIndex());
 		} else {
-			console.log(songs.songs.length, songs)
+			console.log(musicList.length, musicList)
 			setCurrentSongIndex((prevIndex) =>
-				direction === 'next' ? (prevIndex + 1) % songs.songs.length : (prevIndex - 1 + songs.songs.length) % songs.songs.length
+				direction === 'next' ? (prevIndex + 1) % musicList.length : (prevIndex - 1 + musicList.length) % musicList.length
 			);
 		}
 	};
 
 	const getRandomIndex = () => {
-		return Math.floor(Math.random() * songs.songs.length);
+		return Math.floor(Math.random() * musicList.length);
 	};
 
 	const repeatHandler = () => {
@@ -114,17 +120,17 @@ function MusicPlayer(songs: any) {
 					onEnded={() => (isRepeat ? audioRef.current.play() : skipTrackHandler('next'))}
 					onTimeUpdate={timeUpdateHandler}
 					ref={audioRef}
-					src={songs.songs[currentSongIndex]?.audioUrl}
+					src={musicList[currentSongIndex]?.audioUrl}
 				/>
 				<div className="active-song-description">
 
 					<div id="song-image" className="track-art">
-						<img src={songs.songs[currentSongIndex]?.imageUrl} />
+						<img src={musicList[currentSongIndex]?.imageUrl} />
 					</div>
 
 					<div className="song-desc">
 						<div className="track-name">
-							{songs.songs[currentSongIndex]?.name}
+							{musicList[currentSongIndex]?.name}
 						</div>
 						<div className="track-artist">
 							NCS
@@ -189,7 +195,7 @@ function MusicPlayer(songs: any) {
 							/>
 						</div>
 						<div className="total-duration">
-							{songs.songs[currentSongIndex]?.duration}
+							{musicList[currentSongIndex]?.duration}
 						</div>
 					</div>
 				</div>
