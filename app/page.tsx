@@ -7,6 +7,7 @@ import LatestRelease from './latestRelease';
 import MusicPlayer from './AudioPlayer';
 import { MusicPlayerProvider } from './MusicPlayerProvider';
 import PopularArtist from './popularArtist';
+import MusicTheme from './musicThemes';
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
                         <TSA />
                         <LatestRelease />
                         <PopularArtist />
+                        <MusicTheme />
                     </aside>
                 </main>
                 <MusicPlayer songs ={''} />

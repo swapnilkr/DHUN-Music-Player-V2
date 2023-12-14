@@ -17,9 +17,9 @@ function MusicPlayer(songs:any) {
 	const audioRef = useRef() as MutableRefObject<HTMLAudioElement>;
 	const { musicList } = useMusicPlayer();
 
-	useEffect(()=> {
-		console.log("yes",musicList)
-	},[musicList])
+	// useEffect(()=> {
+	// 	console.log("yes",musicList)
+	// },[musicList])
 
 	useEffect(() => {
 		if (isPlaying) {
