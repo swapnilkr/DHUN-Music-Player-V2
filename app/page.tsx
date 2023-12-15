@@ -8,6 +8,7 @@ import MusicPlayer from './AudioPlayer';
 import { MusicPlayerProvider } from './MusicPlayerProvider';
 import PopularArtist from './popularArtist';
 import MusicTheme from './musicThemes';
+import LanguageSection from './languageSection';
 
 export default function Home() {
 
@@ -21,6 +22,7 @@ export default function Home() {
                         <LatestRelease />
                         <PopularArtist />
                         <MusicTheme />
+                        <LanguageSection />
                     </aside>
                 </main>
                 <MusicPlayer songs ={''} />
