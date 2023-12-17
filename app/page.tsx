@@ -2,14 +2,10 @@
 
 import React, { useState } from 'react';
 import NavBar from './navbar';
-import TSA from './tsa';
-import LatestRelease from './latestRelease';
 import MusicPlayer from './AudioPlayer';
 import { MusicPlayerProvider } from './MusicPlayerProvider';
-import PopularArtist from './popularArtist';
-import MusicTheme from './musicThemes';
-import LanguageEngSection from './languageEngSection';
-import Instrumental from './Instrumental';
+import AsideSec1 from './asideSec1';
+
 
 export default function Home() {
 
@@ -18,14 +14,7 @@ export default function Home() {
             <MusicPlayerProvider>
                 <NavBar />
                 <main>
-                    <aside className="aside section-1">
-                        <TSA />
-                        <LatestRelease />
-                        <PopularArtist />
-                        <MusicTheme />
-                        <LanguageEngSection />
-                        <Instrumental />
-                    </aside>
+                    <AsideSec1 />
                 </main>
                 <MusicPlayer songs ={''} />
             </MusicPlayerProvider>

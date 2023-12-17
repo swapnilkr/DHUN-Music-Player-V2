@@ -78,7 +78,7 @@ function LanguageEngSection() {
                     {engMusicList.map((key,index) => (
                         <div onClick={(e) => handleClick(e, index)}>
                             <img src={key.imageUrl} />
-                            <p>{key.name}</p>
+                            <p className='language-music-name'>{key.name}</p>
                             <p>{key.duration}</p>
                         </div>
                     ))}

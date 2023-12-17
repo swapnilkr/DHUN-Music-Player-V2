@@ -745,6 +745,14 @@ input[type="checkbox"]:checked~.latest-release-dropdown {
   margin-bottom: 10px;
 }
 
+.language-music-name {
+  width: 10vw;
+  min-width: 60px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 /* language content container */
 .language-content {
   display: flex;
