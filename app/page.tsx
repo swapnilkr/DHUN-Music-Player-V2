@@ -5,6 +5,7 @@ import NavBar from './navbar';
 import MusicPlayer from './AudioPlayer';
 import { MusicPlayerProvider } from './MusicPlayerProvider';
 import AsideSec1 from './asideSec1';
+import AsideSec2 from './asideSec2';
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
                 <NavBar />
                 <main>
                     <AsideSec1 />
+                    <AsideSec2 />
                 </main>
                 <MusicPlayer songs ={''} />
             </MusicPlayerProvider>

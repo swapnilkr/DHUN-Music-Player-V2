@@ -84,12 +84,12 @@ function LatestRelease() {
                                     <i className="fas fa-play" style={{ width: "100%", height: "100%", display: "inline-block" }} />
                                 </div>
                             </div>
-                            <div className="song-desciption">
+                            <div className="song-description">
                                 <h3>
                                     &nbsp; {key.name}
                                 </h3>
                                 <p>
-                                    &nbsp;{key.releaseDate}
+                                    &nbsp; {key.releaseDate}
                                 </p>
                             </div>
 

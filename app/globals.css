@@ -397,8 +397,15 @@ main {
 }
 
 /* description of the song in the card, which will contain the song nae and author */
-.song-description {
+/* .song-description {
   margin: auto 9%;
+} */
+
+.song-description h3 {
+  width: 15vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* options is the class for the 3 dots which needs to be clicked to trigger the latest release drop down menu */
@@ -867,6 +874,13 @@ hr {
   cursor: pointer;
 }
 
+.playlist-musicname {
+  width: 40px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 /* playlist content container scroll bar */
 .playlist-content::-webkit-scrollbar {
   display: none;
@@ -1138,6 +1152,7 @@ footer {
 
   /* more button vil ve visible and section 2 will be hidden by default for this viewport */
   label[for="more"] {
+    z-index: 111;
     display: block;
   }
 
