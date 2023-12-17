@@ -741,6 +741,10 @@ input[type="checkbox"]:checked~.latest-release-dropdown {
 
 }
 
+.language-heading {
+  margin-bottom: 10px;
+}
+
 /* language content container */
 .language-content {
   display: flex;

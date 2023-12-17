@@ -70,9 +70,9 @@ function Instrumental() {
 
     return(
         <>
-            <div className="language hindi">
+            <div className="language instrumental">
                 <h1 className="language-heading">
-                    Latest Hindi
+                    Instrumental
                 </h1>
                 <div className="language-content">
                     {instrumentalMusic.map((key,index) => (
