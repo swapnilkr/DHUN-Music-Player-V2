@@ -4,7 +4,8 @@ import { useMusicPlayer } from './MusicPlayerProvider';
 function PlaylistContent() {
 
     const { setMusicList } = useMusicPlayer();
-    const [ showFavList, setShowFavList ] = useState(false)
+    const [showFavList, setShowFavList] = useState(false)
+    const [favMusicPlaylist, setFavMusicPlaylist] = useState([]);
 
     let playlistMusic = [
         {
@@ -157,21 +158,41 @@ function PlaylistContent() {
         setMusicList(playlistMusic)
     }, [])
 
-    function handleClick(event :any, index:any) {
+    function handleMessage(event: any) {
+        if (event.data === "Fav Clicked") {
+            setShowFavList(true);
+        } else if (event.data === 'PlayList Clicked') {
+            setShowFavList(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('message', handleMessage);
+
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        }
+    }, [])
+
+    useEffect(() => {
+        setFavMusicPlaylist(JSON.parse(window.localStorage.getItem('favList') || '[]'))
+    }, [showFavList])
+
+    function handleClick(event: any, index: any) {
         let clickedSong = [];
         clickedSong.push(playlistMusic[index])
         setMusicList(clickedSong)
     }
 
-    function addToFav(event:any, index:any) {
+    function addToFav(event: any, index: any) {
         let getFavFromLocalStorage = window.localStorage.getItem('favList') || '[]'
-        if(getFavFromLocalStorage !== undefined) {
+        if (getFavFromLocalStorage !== undefined) {
             let newList = JSON.parse(getFavFromLocalStorage);
-            let findSong = playlistMusic.filter((song) => song.id === index+1)
+            let findSong = playlistMusic.filter((song) => song.id === index + 1)
             newList.push(findSong[0])
             window.localStorage.setItem('favList', JSON.stringify(newList))
         } else {
-            let findSong = playlistMusic.filter((song) => song.id === index+1)
+            let findSong = playlistMusic.filter((song) => song.id === index + 1)
             window.localStorage.setItem('favList', JSON.stringify(findSong[0]))
         }
     }
@@ -180,33 +201,69 @@ function PlaylistContent() {
         <>
 
             <div className="playlist-content">
-                {playlistMusic.map((key, index) => (
-                    <div className="playlist-item" onClick={(e) => handleClick(e, index)}>
-                        <div className="left-content">
-                            <div style={{ marginRight: "4px" }}>
-                                {index+1}
-                            </div>
-                            <div className="coverer">
-                                <img src={key.imageUrl} />
-                                <div className="play-button">
-                                    <i className="fas fa-play" aria-hidden="true"></i>
+                {
+                    showFavList ?
+                        <>
+                            {favMusicPlaylist.map((key: any, index: any) => (
+                                <div className="playlist-item" onClick={(e) => handleClick(e, index)}>
+                                    <div className="left-content">
+                                        <div style={{ marginRight: "4px" }}>
+                                            {index + 1}
+                                        </div>
+                                        <div className="coverer">
+                                            <img src={key.imageUrl} />
+                                            <div className="play-button">
+                                                <i className="fas fa-play" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="playlist-musicname">
+                                                {key.name}
+                                            </div>
+                                            <p>
+                                                NCS
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="right-content">
+                                        <i className="far fa-heart" onClick={(event) => addToFav(event, index)}></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div className="playlist-musicname">
-                                    {key.name}
+                            ))}
+                        </>
+                        :
+
+                        <>
+                            {playlistMusic.map((key, index) => (
+                                <div className="playlist-item" onClick={(e) => handleClick(e, index)}>
+                                    <div className="left-content">
+                                        <div style={{ marginRight: "4px" }}>
+                                            {index + 1}
+                                        </div>
+                                        <div className="coverer">
+                                            <img src={key.imageUrl} />
+                                            <div className="play-button">
+                                                <i className="fas fa-play" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="playlist-musicname">
+                                                {key.name}
+                                            </div>
+                                            <p>
+                                                NCS
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="right-content">
+                                        <i className="far fa-heart" onClick={(event) => addToFav(event, index)}></i>
+                                    </div>
                                 </div>
-                                <p>
-                                    NCS
-                                </p>
-                            </div>
-                        </div>
-                        <div className="right-content">
-                            {/* <i className="far fa-heart" onClick={(event) => addToFav(event,index)}></i> */}
-                            <div onClick={(event) => addToFav(event,index)}>sdfsdf</div>
-                        </div>
-                    </div>
-                ))}
+                            ))}
+                        </>
+
+                }
+
 
             </div>
         </>

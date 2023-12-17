@@ -1,9 +1,12 @@
 function Playlist() {
 
     function showFavList(event:any) {
-
+        window.postMessage('Fav Clicked', '*')
     }
 
+    function showPlayList(event:any) {
+        window.postMessage('PlayList Clicked', '*')
+    }
     return (
         <>
             <div className="heading">
@@ -14,7 +17,7 @@ function Playlist() {
             </div>
 
             <div className="queue-options" id="queue-option-box">
-                <p><div style={{color:"#f8f9fa", fontWeight:"bold"}}>Playlists</div></p>
+                <p><div style={{color:"#f8f9fa", fontWeight:"bold"}} onClick={(event) => showPlayList(event)}>Playlists</div></p>
                 <hr />
                 <p><div style={{color:"#f8f9fa", fontWeight:"bold"}} onClick={(event) => showFavList(event)}>Favourite songs</div></p>
                 <hr />
