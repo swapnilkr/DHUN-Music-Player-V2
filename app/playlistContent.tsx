@@ -225,8 +225,8 @@ function PlaylistContent() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="right-content">
-                                        <i className="far fa-heart" onClick={(event) => addToFav(event, index)}></i>
+                                    <div className="right-content" onClick={(event) => addToFav(event, index)}>
+                                        <i className="far fa-heart"></i>
                                     </div>
                                 </div>
                             ))}
@@ -255,8 +255,8 @@ function PlaylistContent() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="right-content">
-                                        <i className="far fa-heart" onClick={(event) => addToFav(event, index)}></i>
+                                    <div className="right-content" onClick={(event) => addToFav(event, index)}>
+                                        <i className="far fa-heart"></i>
                                     </div>
                                 </div>
                             ))}
