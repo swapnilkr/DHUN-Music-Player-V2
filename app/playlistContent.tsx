@@ -6,7 +6,7 @@ function PlaylistContent() {
     const { setMusicList } = useMusicPlayer();
     const [showFavList, setShowFavList] = useState(false)
     const [favMusicPlaylist, setFavMusicPlaylist] = useState([]);
-    const [favorites, setFavorites]:any = useState([]);
+    const [favorites, setFavorites] = useState<any[]>([]);
 
     let playlistMusic = [
         {
@@ -177,6 +177,7 @@ function PlaylistContent() {
 
     useEffect(() => {
         setFavMusicPlaylist(JSON.parse(window.localStorage.getItem('favList') || '[]'))
+        setFavorites(JSON.parse(window.localStorage.getItem('favList') || '[]'))
     }, [showFavList])
 
     function handleClick(event: any, index: any) {
@@ -232,10 +233,10 @@ function PlaylistContent() {
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
                                         {
-                                            !favorites.some((song:any) => song.name === key.name) ?
-                                                <i className="far fa-heart"></i>
+                                            favorites.some((song:any) => song.name === key.name) ?
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.svg"/>
                                                 :
-                                                <i className="fa fa-heart" aria-hidden="true"></i>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.svg"/>
                                         }
                                     </div>
                                 </div>
@@ -267,10 +268,11 @@ function PlaylistContent() {
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
                                         {
-                                            !favorites.some((song:any) => song.name === key.name) ?
-                                                <i className="far fa-heart"></i>
+                                            favorites.some((song:any) => song.name === key.name) ?
+                                                
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.svg"/>
                                                 :
-                                                <i className="fa fa-heart" aria-hidden="true"></i>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.svg"/>
                                         }
 
                                     </div>
