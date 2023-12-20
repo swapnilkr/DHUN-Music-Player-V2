@@ -6,6 +6,7 @@ function PlaylistContent() {
     const { setMusicList } = useMusicPlayer();
     const [showFavList, setShowFavList] = useState(false)
     const [favMusicPlaylist, setFavMusicPlaylist] = useState([]);
+    const [favorites, setFavorites]:any = useState([]);
 
     let playlistMusic = [
         {
@@ -186,14 +187,18 @@ function PlaylistContent() {
 
     function addToFav(event: any, index: any) {
         let getFavFromLocalStorage = window.localStorage.getItem('favList') || '[]'
-        if (getFavFromLocalStorage !== undefined) {
+        if (getFavFromLocalStorage !== null) {
             let newList = JSON.parse(getFavFromLocalStorage);
             let findSong = playlistMusic.filter((song) => song.id === index + 1)
             newList.push(findSong[0])
             window.localStorage.setItem('favList', JSON.stringify(newList))
+            setFavorites(newList);
         } else {
-            let findSong = playlistMusic.filter((song) => song.id === index + 1)
+            let findSong = playlistMusic.filter((song) => song.id === index + 1);
             window.localStorage.setItem('favList', JSON.stringify(findSong[0]))
+            if(findSong.length >0 ){
+                setFavorites([findSong[0]])
+            }
         }
     }
 
@@ -226,7 +231,12 @@ function PlaylistContent() {
                                         </div>
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
-                                        <i className="far fa-heart"></i>
+                                        {
+                                            !favorites.some((song:any) => song.name === key.name) ?
+                                                <i className="far fa-heart"></i>
+                                                :
+                                                <i className="fa fa-heart" aria-hidden="true"></i>
+                                        }
                                     </div>
                                 </div>
                             ))}
@@ -256,7 +266,13 @@ function PlaylistContent() {
                                         </div>
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
-                                        <i className="far fa-heart"></i>
+                                        {
+                                            !favorites.some((song:any) => song.name === key.name) ?
+                                                <i className="far fa-heart"></i>
+                                                :
+                                                <i className="fa fa-heart" aria-hidden="true"></i>
+                                        }
+
                                     </div>
                                 </div>
                             ))}
