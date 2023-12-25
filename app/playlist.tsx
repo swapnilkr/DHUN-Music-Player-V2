@@ -19,18 +19,18 @@ function Playlist() {
             <div className="heading">
                 <h1> Playlist </h1>
                 <h4>
-                    <div className='queue' onClick={(event) => showDropdownOnClick(event)}>Queue <i className="fas fa-chevron-circle-down"></i></div>
+                    <div className='queue' onClick={(event) => showDropdownOnClick(event)}>CLICK <i className="fas fa-chevron-circle-down"></i></div>
                 </h4>
             </div>
             {
                 showDropdown ?
                 
                 <div className="queue-options" id="queue-option-box">
-                    <p><div style={{color:"#f8f9fa", fontWeight:"bold"}} onClick={(event) => showPlayList(event)}>Playlists</div></p>
+                    <p><div style={{color:"#f8f9fa", fontWeight:"bold", cursor:"pointer"}} onClick={(event) => showPlayList(event)}>Playlists</div></p>
                     <hr />
-                    <p><div style={{color:"#f8f9fa", fontWeight:"bold"}} onClick={(event) => showFavList(event)}>Favourite songs</div></p>
+                    <p><div style={{color:"#f8f9fa", fontWeight:"bold", cursor:"pointer"}} onClick={(event) => showFavList(event)}>Favourite songs</div></p>
                     <hr />
-                    <p><div style={{color:"red", fontWeight:"bold"}}>Close</div></p>
+                    <p><div style={{color:"red", fontWeight:"bold", cursor:"pointer"}} onClick={(event) => showDropdownOnClick(event)}>Close</div></p>
                 </div>
                 
                 :

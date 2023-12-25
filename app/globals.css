@@ -825,6 +825,7 @@ label[for="more"]:checked~input {
 
 /* these are the properties for the queue options box. the queue options box will be visible when one clicks on the queue button */
 .queue-options {
+  border: 1px solid black;
   position: fixed;
   right: 4%;
   top: 14%;
