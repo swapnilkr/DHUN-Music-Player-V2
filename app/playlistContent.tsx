@@ -234,9 +234,9 @@ function PlaylistContent() {
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
                                         {
                                             favorites.some((song:any) => song.name === key.name) ?
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.svg"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.png"/>
                                                 :
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.svg"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.png"/>
                                         }
                                     </div>
                                 </div>
@@ -270,9 +270,9 @@ function PlaylistContent() {
                                         {
                                             favorites.some((song:any) => song.name === key.name) ?
                                                 
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.svg"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.png"/>
                                                 :
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.svg"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.png"/>
                                         }
 
                                     </div>

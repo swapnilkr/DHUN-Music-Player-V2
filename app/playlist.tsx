@@ -19,7 +19,7 @@ function Playlist() {
             <div className="heading">
                 <h1> Playlist </h1>
                 <h4>
-                    <div className='queue' onClick={(event) => showDropdownOnClick(event)}>CLICK <i className="fas fa-chevron-circle-down"></i></div>
+                    <div className='queue' onMouseOver={(event)=> showDropdownOnClick(event)} onMouseOut={(event)=> showDropdownOnClick(event)} onClick={(event) => showDropdownOnClick(event)}>CLICK <i className="fas fa-chevron-circle-down"></i></div>
                 </h4>
             </div>
             {

@@ -768,6 +768,7 @@ input[type="checkbox"]:checked~.latest-release-dropdown {
   justify-content: space-between;
   align-items: center;
   padding: 0px 2px;
+  padding-bottom: 18px;
 }
 
 /* image in language content */

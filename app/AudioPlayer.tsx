@@ -4,7 +4,7 @@ import { useMusicPlayer } from './MusicPlayerProvider';
 
 
 
-function MusicPlayer(songs:any) {
+function MusicPlayer(songs: any) {
 
 	const [currentSongIndex, setCurrentSongIndex] = useState(0);
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -13,6 +13,8 @@ function MusicPlayer(songs:any) {
 	const [volume, setVolume] = useState(0.5);
 	const [currentTime, setCurrentTime] = useState(0);
 	const [totalTime, setTotalTime] = useState(0);
+	const [favorites, setFavorites] = useState<any[]>([]);
+
 
 	const audioRef = useRef() as MutableRefObject<HTMLAudioElement>;
 	const { musicList } = useMusicPlayer();
@@ -111,7 +113,26 @@ function MusicPlayer(songs:any) {
 
 	// 	bg_colour.style.background = bgColor;
 	// }
-	
+	useEffect(() => {
+		console.log("set", musicList, musicList[0])
+		setFavorites(JSON.parse(window.localStorage.getItem('favList') || '[]'))
+	}, [musicList])
+
+	function addToFav(event: any, index: any) {
+		let getFavFromLocalStorage = window.localStorage.getItem('favList') || '[]'
+		if (getFavFromLocalStorage !== null) {
+			let newList = JSON.parse(getFavFromLocalStorage);
+			newList.push(musicList[0])
+			window.localStorage.setItem('favList', JSON.stringify(newList))
+			setFavorites(newList);
+		} else {
+			window.localStorage.setItem('favList', JSON.stringify(musicList[0]))
+			if (musicList[0].length > 0) {
+				setFavorites([musicList[0]])
+			}
+		}
+	}
+
 
 	return (
 		<>
@@ -138,8 +159,13 @@ function MusicPlayer(songs:any) {
 					</div>
 
 					<div className="heart-and-ban-icon">
-						<span style={{ padding: "0px 5px" }}>
-							<i className="far fa-heart"></i>
+						<span style={{ padding: "0px 5px" }} onClick={(event) => addToFav(event, 0)}>
+							{
+								favorites.some((song: any) => song.name === musicList[currentSongIndex]?.name) ?
+									<img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-solid.png" />
+									:
+									<img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-regular.png" />
+							}
 						</span>
 						<span style={{ padding: "0px 5px" }}>
 							<i className="fas fa-ban"></i>
