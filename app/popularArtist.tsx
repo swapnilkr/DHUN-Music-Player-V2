@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 function PopularArtist() {
     return (
         <>
@@ -7,15 +9,18 @@ function PopularArtist() {
                 </h1>
                 <div className="popular-artist-content">
 
-                    <a href="Single Playlist Screen.html">
-                        <div>
-                            <img src="/popular artists/coldplay.jpg" />
-                            <div><i className="fas fa-play"></i></div>
-                            <p>
-                                Coldplay
-                            </p>
-                        </div>
-                    </a>
+                    <Link href="/Album">
+                        
+                            <div>
+                                <img src="/popular artists/coldplay.jpg" />
+                                <div><i className="fas fa-play"></i></div>
+                                <p>
+                                    Coldplay
+                                </p>
+                            </div>
+                        
+                    </Link>
+
                     <a href="Single Playlist Screen.html">
                         <div>
                             <img src="/popular artists/adele.jpg" />
