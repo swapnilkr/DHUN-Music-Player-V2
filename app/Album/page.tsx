@@ -1,7 +1,10 @@
+import NavBar from '../navbar';
+
 function page() {
     return(
         <>
-            <div>sfjsdjfsdjf</div>
+            <NavBar />
+            
         </>
     )
 }
