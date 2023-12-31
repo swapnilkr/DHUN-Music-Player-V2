@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link'
 
 
 export default function NavBar() {
@@ -13,20 +14,23 @@ export default function NavBar() {
                 </head>
                 <body>
                     <nav className="navigation-bar">
+                        <Link href="/">
+                            <div className="title-combo">
+                                <div className="website-logo">
 
-                        <div className="title-combo">
-                            <div className="website-logo">
-                                <Image src="/website_logo.svg" alt='website-logo' height={50} width={50} />
+                                    <Image src="/website_logo.svg" alt='website-logo' height={50} width={50} />
+                                </div>
+                                <div className="website-name">
+                                    <h1>
+                                        DHUN
+                                    </h1>
+                                    <h4>
+                                        Online Music Player
+                                    </h4>
+                                </div>
                             </div>
-                            <div className="website-name">
-                                <h1>
-                                    DHUN
-                                </h1>
-                                <h4>
-                                    Online Music Player
-                                </h4>
-                            </div>
-                        </div>
+                        </Link>
+
 
                         <div className="favs">
                             <h4>
