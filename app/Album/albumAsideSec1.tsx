@@ -1,4 +1,5 @@
 import AlbumDesc from "./albumDesc";
+import AlbumPlaylist from "./albumPlaylist";
 
 function AlbumAsideSec1(){
 
@@ -6,6 +7,7 @@ function AlbumAsideSec1(){
         <>
             <aside className="aside section-1">
                 <AlbumDesc />
+                <AlbumPlaylist />
             </aside>
         </>
     )
