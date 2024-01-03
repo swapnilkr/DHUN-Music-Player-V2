@@ -1,7 +1,7 @@
 function AlbumPlaylist() {
 
 
-    // const   
+    // const
 
     return (
         <>
