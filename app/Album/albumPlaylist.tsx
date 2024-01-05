@@ -206,7 +206,6 @@ function AlbumPlaylist(choosedPlaylist: any) {
             </div>
         </>
     )
-
 }
 
 export default AlbumPlaylist;
