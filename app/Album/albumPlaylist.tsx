@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useMusicPlayer } from '../MusicPlayerProvider';
 
 function AlbumPlaylist(choosedPlaylist: any) {
 
+    const { setMusicList } = useMusicPlayer();
     const [selectedList, setSelectedList] = useState<any[]>([]);
 
     let playlist1 = [
@@ -164,33 +166,44 @@ function AlbumPlaylist(choosedPlaylist: any) {
         )
     }, [choosedPlaylist])
 
+
+    useEffect(() => {
+        setMusicList(selectedList)
+    }, [])
+
+    function handleClick(event :any, index:any) {
+        let clickedSong = [];
+        clickedSong.push(selectedList[index])
+        setMusicList(clickedSong)
+    }
+
     return (
         <>
             <div className="playlist-items">
                 <>
-                    {selectedList.map((list: any) => (
-                        <div className="playlist-item">
+                    {selectedList.map((list: any, index:any) => (
+                        <div className="playlist-item" onClick={(event)=>handleClick(event, index)}>
                             <div className="left">
                                 <div>
-                                    01
+                                    {list.id}
                                 </div>
                                 <div>
-                                    <img src="/coldplay/hymn for the.jpg" />
+                                    <img src={list.imageUrl} />
                                     <div className="play-btn">
                                         <i className="fas fa-play"></i>
                                     </div>
                                 </div>
                                 <div>
                                     <h5>
-                                        Hymn For The Weekend
+                                        {list.name}
                                     </h5>
                                     <p>
-                                        Coldplay
+                                        NCS
                                     </p>
                                 </div>
                             </div>
                             <div className="center">
-                                3:10
+                                {list.duration}
                             </div>
                             <div className="right">
                                 <div>
