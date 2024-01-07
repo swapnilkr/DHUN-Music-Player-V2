@@ -202,7 +202,11 @@ function PlaylistContent() {
         if (getFavFromLocalStorage !== null) {
             let newList = JSON.parse(getFavFromLocalStorage);
             let findSong = playlistMusic.filter((song) => song.id === index + 1)
-            newList.push(findSong[0])
+            const songIndex = newList.findIndex((s: any) => s.name === findSong[0].name);
+            if(songIndex === -1) 
+                newList.push(findSong[0])
+            else if(songIndex !== -1)
+                newList.splice(songIndex,1)
             window.localStorage.setItem('favList', JSON.stringify(newList))
             setFavorites(newList);
         } else {
@@ -216,7 +220,7 @@ function PlaylistContent() {
 
     function addToRecent(song: any) {
         const recentSongs = JSON.parse(localStorage.getItem('recentSongs') || '[]')
-        const songIndex = recentSongs.findIndex((s: any) => s.id === song.id);
+        const songIndex = recentSongs.findIndex((s: any) => s.name === song.name);
         const updatedRecentSongs = [...recentSongs];
 
         if (songIndex !== -1) {
