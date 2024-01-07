@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useMusicPlayer } from './MusicPlayerProvider';
 
-
-interface Song {
-    id: number;
-    name: string;
-    imageUrl: string;
-    audioUrl: string;
-    releaseDate: string;
-    duration: string;
-}
-
 function PlaylistContent() {
 
     const { setMusicList } = useMusicPlayer();
     const [showFavList, setShowFavList] = useState(false)
     const [favMusicPlaylist, setFavMusicPlaylist] = useState([]);
     const [favorites, setFavorites] = useState<any[]>([]);
-    const [recentSongs, setRecentSongs] = useState<Song[]>([]);
 
     let playlistMusic = [
         {
@@ -170,12 +159,6 @@ function PlaylistContent() {
         setMusicList(playlistMusic)
     }, [])
 
-    useEffect(() => {
-        const storedRecentSongs = JSON.parse(localStorage.getItem('recentSongs') || '[]');
-        setRecentSongs(storedRecentSongs);
-    }, []);
-
-
     function handleMessage(event: any) {
         console.log("qswap", event)
         if (event.data === "Fav Clicked") {
@@ -195,6 +178,13 @@ function PlaylistContent() {
         }
     }, [])
 
+    function AddToRecentHandle(event: any, song: any) {
+        window.postMessage({
+            message: 'Add To Recent',
+            info: song,
+        }, '*');
+    }
+
     useEffect(() => {
         setFavMusicPlaylist(JSON.parse(window.localStorage.getItem('favList') || '[]'))
         setFavorites(JSON.parse(window.localStorage.getItem('favList') || '[]'))
@@ -204,6 +194,7 @@ function PlaylistContent() {
         let clickedSong = [];
         clickedSong.push(playlistMusic[index])
         setMusicList(clickedSong)
+        AddToRecentHandle(event, playlistMusic[index])
     }
 
     function addToFav(event: any, index: any) {
@@ -224,7 +215,7 @@ function PlaylistContent() {
     }
 
     function addToRecent(song: any) {
-        console.log("add", song)
+        const recentSongs = JSON.parse(localStorage.getItem('recentSongs') || '[]')
         const songIndex = recentSongs.findIndex((s: any) => s.id === song.id);
         const updatedRecentSongs = [...recentSongs];
 
@@ -235,7 +226,6 @@ function PlaylistContent() {
 
         // Add the song to the beginning of the array
         updatedRecentSongs?.unshift(song);
-
         localStorage.setItem('recentSongs', JSON.stringify(updatedRecentSongs));
     }
 

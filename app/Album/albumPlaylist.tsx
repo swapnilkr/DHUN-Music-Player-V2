@@ -166,6 +166,12 @@ function AlbumPlaylist(choosedPlaylist: any) {
         )
     }, [choosedPlaylist])
 
+    function AddToRecentHandle(event: any, song: any) {
+        window.postMessage({
+            message: 'Add To Recent',
+            info: song,
+        }, '*');
+    }
 
     useEffect(() => {
         setMusicList(selectedList)
@@ -175,6 +181,7 @@ function AlbumPlaylist(choosedPlaylist: any) {
         let clickedSong = [];
         clickedSong.push(selectedList[index])
         setMusicList(clickedSong)
+        AddToRecentHandle(event, selectedList[index])
     }
 
     return (

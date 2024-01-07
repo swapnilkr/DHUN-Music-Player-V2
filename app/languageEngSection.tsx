@@ -58,6 +58,13 @@ function LanguageEngSection() {
         },
     ]
 
+    function AddToRecentHandle(event: any, song: any) {
+        window.postMessage({
+            message: 'Add To Recent',
+            info: song,
+        }, '*');
+    }
+
     useEffect(() => {
         setMusicList(engMusicList)
     }, [])
@@ -66,6 +73,7 @@ function LanguageEngSection() {
         let clickedSong = [];
         clickedSong.push(engMusicList[index])
         setMusicList(clickedSong)
+        AddToRecentHandle(event, engMusicList[index])
     }
 
     return(

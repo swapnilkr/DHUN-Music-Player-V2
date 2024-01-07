@@ -58,6 +58,13 @@ function Instrumental() {
         },
     ]
 
+    function AddToRecentHandle(event: any, song: any) {
+        window.postMessage({
+            message: 'Add To Recent',
+            info: song,
+        }, '*');
+    }
+
     useEffect(() => {
         setMusicList(instrumentalMusic)
     }, [])
@@ -66,6 +73,7 @@ function Instrumental() {
         let clickedSong = [];
         clickedSong.push(instrumentalMusic[index])
         setMusicList(clickedSong)
+        AddToRecentHandle(event, instrumentalMusic[index])
     }
 
     return(
