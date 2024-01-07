@@ -28,8 +28,9 @@ function SimilarBrand() {
                     </div>
                 </div>
                 <>
-                    {brandInfo.map((item) => (
-                        <div className="list">
+                    <div className="list">
+                        {brandInfo.map((item) => (
+
                             <div className="list-item">
                                 <div>
                                     <img src={item.imgSrc} />
@@ -45,8 +46,9 @@ function SimilarBrand() {
                                 </div>
                             </div>
 
-                        </div>
-                    ))}
+
+                        ))}
+                    </div>
                 </>
             </div>
         </>

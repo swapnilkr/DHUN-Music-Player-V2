@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useMusicPlayer } from './MusicPlayerProvider';
 
+
+interface Song {
+    id: number;
+    name: string;
+    imageUrl: string;
+    audioUrl: string;
+    releaseDate: string;
+    duration: string;
+}
+
 function PlaylistContent() {
 
     const { setMusicList } = useMusicPlayer();
     const [showFavList, setShowFavList] = useState(false)
     const [favMusicPlaylist, setFavMusicPlaylist] = useState([]);
     const [favorites, setFavorites] = useState<any[]>([]);
+    const [recentSongs, setRecentSongs] = useState<Song[]>([]);
 
     let playlistMusic = [
         {
@@ -159,11 +170,20 @@ function PlaylistContent() {
         setMusicList(playlistMusic)
     }, [])
 
+    useEffect(() => {
+        const storedRecentSongs = JSON.parse(localStorage.getItem('recentSongs') || '[]');
+        setRecentSongs(storedRecentSongs);
+    }, []);
+
+
     function handleMessage(event: any) {
+        console.log("qswap", event)
         if (event.data === "Fav Clicked") {
             setShowFavList(true);
         } else if (event.data === 'PlayList Clicked') {
             setShowFavList(false)
+        } else if (event.data.message === "Add To Recent") {
+            addToRecent(event.data.info)
         }
     }
 
@@ -197,10 +217,26 @@ function PlaylistContent() {
         } else {
             let findSong = playlistMusic.filter((song) => song.id === index + 1);
             window.localStorage.setItem('favList', JSON.stringify(findSong[0]))
-            if(findSong.length >0 ){
+            if (findSong.length > 0) {
                 setFavorites([findSong[0]])
             }
         }
+    }
+
+    function addToRecent(song: any) {
+        console.log("add", song)
+        const songIndex = recentSongs.findIndex((s: any) => s.id === song.id);
+        const updatedRecentSongs = [...recentSongs];
+
+        if (songIndex !== -1) {
+            // If the song is already in recent songs, remove it
+            updatedRecentSongs.splice(songIndex, 1);
+        }
+
+        // Add the song to the beginning of the array
+        updatedRecentSongs?.unshift(song);
+
+        localStorage.setItem('recentSongs', JSON.stringify(updatedRecentSongs));
     }
 
     return (
@@ -233,10 +269,10 @@ function PlaylistContent() {
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
                                         {
-                                            favorites.some((song:any) => song.name === key.name) ?
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.png"/>
+                                            favorites.some((song: any) => song.name === key.name) ?
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-solid.png" />
                                                 :
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.png"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-regular.png" />
                                         }
                                     </div>
                                 </div>
@@ -268,11 +304,11 @@ function PlaylistContent() {
                                     </div>
                                     <div className="right-content" onClick={(event) => addToFav(event, index)}>
                                         {
-                                            favorites.some((song:any) => song.name === key.name) ?
-                                                
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-solid.png"/>
+                                            favorites.some((song: any) => song.name === key.name) ?
+
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-solid.png" />
                                                 :
-                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{height: "auto"}} src="/heart-regular.png"/>
+                                                <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto" }} src="/heart-regular.png" />
                                         }
 
                                     </div>

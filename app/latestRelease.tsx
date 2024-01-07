@@ -60,10 +60,18 @@ function LatestRelease() {
         setMusicList(musicList)
     }, [])
 
-    function handleClick(event :any, index:any) {
+    function AddToRecentHandle(event: any, song: any) {
+        window.postMessage({
+            message: 'Add To Recent',
+            info: song,
+        }, '*');
+    }
+
+    function handleClick(event: any, index: any) {
         let clickedSong = [];
         clickedSong.push(musicList[index])
         setMusicList(clickedSong)
+        AddToRecentHandle(event, musicList[index])
     }
 
 
