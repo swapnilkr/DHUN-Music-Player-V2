@@ -32,7 +32,7 @@ function RecentyPlayed() {
                             <div className="playlist-item">
                                 <div className="left">
                                     <div>
-                                        {song.id}
+                                        {index+1}
                                     </div>
                                     <div>
                                         <img src={song.imageUrl} />
@@ -40,7 +40,7 @@ function RecentyPlayed() {
                                             <i className="fas fa-play"></i>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className='song-name-recent'>
                                         <h5 className="author-name">
                                             {song.name}
                                         </h5>

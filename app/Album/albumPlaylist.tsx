@@ -1,7 +1,14 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { useMusicPlayer } from '../MusicPlayerProvider';
+import { useSearchParams } from 'next/navigation'
 
-function AlbumPlaylist(choosedPlaylist: any) {
+
+function AlbumPlaylist() {
+
+    const searchParams = useSearchParams()
+    const choosedPlaylist = searchParams.get('list')
 
     const { setMusicList } = useMusicPlayer();
     const [selectedList, setSelectedList] = useState<any[]>([]);
@@ -161,8 +168,9 @@ function AlbumPlaylist(choosedPlaylist: any) {
     ]
 
     useEffect(() => {
+        console.log(choosedPlaylist)
         setSelectedList(
-            choosedPlaylist === 1 ? playlist1 : choosedPlaylist === 2 ? playlist2 : playlist3
+            choosedPlaylist === '1' ? playlist1 : choosedPlaylist === '2' ? playlist2 : playlist3
         )
     }, [choosedPlaylist])
 
@@ -177,7 +185,7 @@ function AlbumPlaylist(choosedPlaylist: any) {
         setMusicList(selectedList)
     }, [])
 
-    function handleClick(event :any, index:any) {
+    function handleClick(event: any, index: any) {
         let clickedSong = [];
         clickedSong.push(selectedList[index])
         setMusicList(clickedSong)
@@ -188,8 +196,8 @@ function AlbumPlaylist(choosedPlaylist: any) {
         <>
             <div className="playlist-items">
                 <>
-                    {selectedList.map((list: any, index:any) => (
-                        <div className="playlist-item" onClick={(event)=>handleClick(event, index)}>
+                    {selectedList.map((list: any, index: any) => (
+                        <div className="playlist-item" onClick={(event) => handleClick(event, index)}>
                             <div className="left">
                                 <div>
                                     {list.id}
@@ -200,7 +208,7 @@ function AlbumPlaylist(choosedPlaylist: any) {
                                         <i className="fas fa-play"></i>
                                     </div>
                                 </div>
-                                <div>
+                                <div className='song-name-album'>
                                     <h5>
                                         {list.name}
                                     </h5>

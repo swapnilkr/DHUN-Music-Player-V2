@@ -2171,3 +2171,11 @@ footer {
 	height: 100%;
 }
 
+
+.song-name-recent h5,
+.song-name-album h5{
+  width: 15vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
