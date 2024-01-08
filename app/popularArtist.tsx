@@ -9,7 +9,7 @@ function PopularArtist() {
                 </h1>
                 <div className="popular-artist-content">
 
-                    <Link href="/Album?list=1">
+                    <Link href="/Album?list=1&singer=coldplay">
 
                         <div>
                             <img src="/popular artists/coldplay.jpg" />
@@ -21,7 +21,7 @@ function PopularArtist() {
 
                     </Link>
 
-                    <Link href="/Album?list=2">
+                    <Link href="/Album?list=2&singer=adele">
                         <div>
                             <img src="/popular artists/adele.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -30,7 +30,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=3">
+                    <Link href="/Album?list=3&singer=dr">
                         <div>
                             <img src="/popular artists/darshan rawal.jpg" width="15vw" height="10vw" />
                             <div><i className="fas fa-play"></i></div>
@@ -39,7 +39,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=1">
+                    <Link href="/Album?list=1&singer=ed">
                         <div>
                             <img src="/popular artists/ed sheeran.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -48,7 +48,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=2">
+                    <Link href="/Album?list=2&singer=eminem">
                         <div>
                             <img src="/popular artists/eminem.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -57,7 +57,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=3">
+                    <Link href="/Album?list=3&singer=katy">
                         <div>
                             <img src="/popular artists/katy.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -66,7 +66,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=1">
+                    <Link href="/Album?list=1&singer=martin">
                         <div>
                             <img src="/popular artists/martin.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -75,7 +75,7 @@ function PopularArtist() {
                             </p>
                         </div>
                     </Link>
-                    <Link href="/Album?list=2">
+                    <Link href="/Album?list=2&singer=mj">
                         <div>
                             <img src="/popular artists/mj.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -85,7 +85,7 @@ function PopularArtist() {
                         </div>
                     </Link>
 
-                    <Link href="/Album?list=3">
+                    <Link href="/Album?list=3&singer=shakira">
                         <div>
                             <img src="/popular artists/shakira.jpg" />
                             <div><i className="fas fa-play"></i></div>
@@ -95,12 +95,12 @@ function PopularArtist() {
                         </div>
                     </Link>
 
-                    <Link href="/Album?list=1">
+                    <Link href="/Album?list=1&singer=zyan">
                         <div>
                             <img src="/popular artists/zyan.jpg" />
                             <div><i className="fas fa-play"></i></div>
                             <p>
-                                Zyan Malik
+                                Zayn Malik
                             </p>
                         </div>
                     </Link>

@@ -1849,6 +1849,7 @@ footer {
 	position: absolute;
 	height: 100%;
 	width: 98%;
+  border-radius: 10px;
 }
 
 /* image insider jumbotron */
@@ -1860,6 +1861,7 @@ footer {
 	left:0vw;
 	top:0vw;
 	background-size: cover;
+  border-radius: 25%;
 }
 /* right part of the jumbotron */
 .page2 .jumbotron-detail 
@@ -1932,7 +1934,8 @@ footer {
 /* follow button */
 .page2 .btns > button:nth-child(2) 
 {
-	background-color: transparent;
+	margin: 10px;
+  background-image: linear-gradient(-19deg, #001d38 19%, blue 100%);
 }
 
 /* animation for glowing heart in each of the playlist items */
