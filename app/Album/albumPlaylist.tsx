@@ -12,6 +12,7 @@ function AlbumPlaylist() {
 
     const { setMusicList } = useMusicPlayer();
     const [selectedList, setSelectedList] = useState<any[]>([]);
+    const [favorites, setFavorites] = useState<any[]>([]);
 
     let playlist1 = [
         {
@@ -168,10 +169,11 @@ function AlbumPlaylist() {
     ]
 
     useEffect(() => {
-        console.log(choosedPlaylist)
         setSelectedList(
             choosedPlaylist === '1' ? playlist1 : choosedPlaylist === '2' ? playlist2 : playlist3
         )
+        setFavorites(JSON.parse(window.localStorage.getItem('favList') || '[]'))
+
     }, [choosedPlaylist])
 
     function AddToRecentHandle(event: any, song: any) {
@@ -181,8 +183,20 @@ function AlbumPlaylist() {
         }, '*');
     }
 
+    function handleMessage(event:any) {
+        if (event.data === "Play All") {
+            console.log("ashh")
+            setMusicList(selectedList)
+        } 
+    }
+
     useEffect(() => {
         setMusicList(selectedList)
+        window.addEventListener('message', handleMessage);
+
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        }
     }, [])
 
     function handleClick(event: any, index: any) {
@@ -190,6 +204,27 @@ function AlbumPlaylist() {
         clickedSong.push(selectedList[index])
         setMusicList(clickedSong)
         AddToRecentHandle(event, selectedList[index])
+    }
+
+    function addToFav(event: any, index: any) {
+        let getFavFromLocalStorage = window.localStorage.getItem('favList') || '[]'
+        if (getFavFromLocalStorage !== null) {
+            let newList = JSON.parse(getFavFromLocalStorage);
+            let findSong = selectedList.filter((song) => song.id === index + 1)
+            const songIndex = newList.findIndex((s: any) => s.name === findSong[0].name);
+            if(songIndex === -1) 
+                newList.push(findSong[0])
+            else if(songIndex !== -1)
+                newList.splice(songIndex,1)
+            window.localStorage.setItem('favList', JSON.stringify(newList))
+            setFavorites(newList);
+        } else {
+            let findSong = selectedList.filter((song) => song.id === index + 1);
+            window.localStorage.setItem('favList', JSON.stringify(findSong[0]))
+            if (findSong.length > 0) {
+                setFavorites([findSong[0]])
+            }
+        }
     }
 
     return (
@@ -221,8 +256,13 @@ function AlbumPlaylist() {
                                 {list.duration}
                             </div>
                             <div className="right">
-                                <div>
-                                    <i className="far fa-heart"></i>
+                                <div onClick={(event) => addToFav(event, index)}>
+                                    {
+                                        favorites.some((song: any) => song.name === list.name) ?
+                                            <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "1em", width: "1em" }} src="/heart-solid.png" />
+                                            :
+                                            <img className="svg-inline--fa fa-heart fa-w-16" style={{ height: "auto", width: "1em" }} src="/heart-regular.png" />
+                                    }
                                 </div>
                                 <div>
                                     <i className="fas fa-plus"></i>

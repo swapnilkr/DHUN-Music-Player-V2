@@ -160,7 +160,6 @@ function PlaylistContent() {
     }, [])
 
     function handleMessage(event: any) {
-        console.log("qswap", event)
         if (event.data === "Fav Clicked") {
             setShowFavList(true);
         } else if (event.data === 'PlayList Clicked') {

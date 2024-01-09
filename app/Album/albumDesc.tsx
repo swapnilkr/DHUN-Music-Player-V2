@@ -20,6 +20,7 @@ function AlbumDesc() {
     const choosedSinger = searchParams.get('singer')
 
     const [selectedSinger, setSelectedSinger] = useState<Artist | null>();
+    const [isFollowing, setIsFollowing] = useState(false);
 
     let singerInfo = [
         {
@@ -130,6 +131,24 @@ function AlbumDesc() {
         setSelectedSinger(singerInfo.find((singer) => singer.key === choosedSinger))
     }, [choosedSinger])
 
+    useEffect(() => {
+        const storedIsFollowing = localStorage.getItem('isFollowing');
+        if (storedIsFollowing !== null) {
+            setIsFollowing(JSON.parse(storedIsFollowing));
+        }
+    }, []);
+
+    function handleFollow(event: any) {
+        const newIsFollowing = !isFollowing;
+        setIsFollowing(newIsFollowing);
+        localStorage.setItem('isFollowing', JSON.stringify(newIsFollowing));
+    };
+
+    function handlePlayAll(e:any) {
+        window.postMessage('Play All', '*')
+
+    }
+
     return (
         <>
             <div className="jumbotron" >
@@ -151,8 +170,12 @@ function AlbumDesc() {
                     </div>
                     <div className="action-part">
                         <div className="btns">
-                            <button>Play All</button>
-                            <button>Follow</button>
+                            <button onClick={(e)=> handlePlayAll(e)}>Play All</button>
+                            <span onClick={(e) => handleFollow(e)}>
+                                <button>      
+                                    {isFollowing ? 'Following' : 'Follow'}
+                                </button>
+                            </span>
                         </div>
                         <p>
                             {selectedSinger?.track}

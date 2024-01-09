@@ -1918,7 +1918,7 @@ footer {
 {
 	font-size: 1vw;
 }
-.page2 .btns > button
+.page2 .btns button
  {
 	border: 0px;
 	height: 3vw;
@@ -1932,7 +1932,7 @@ footer {
 	background-image: linear-gradient(-19deg, red 0%, blue 100%);
 }
 /* follow button */
-.page2 .btns > button:nth-child(2) 
+.page2 .btns span button
 {
 	margin: 10px;
   background-image: linear-gradient(-19deg, #001d38 19%, blue 100%);
@@ -2010,7 +2010,7 @@ footer {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 50px;
+	width: 75px;
 	height: 100%;
 	padding-right: 2%;
 }
