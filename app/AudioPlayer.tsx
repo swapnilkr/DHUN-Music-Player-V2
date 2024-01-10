@@ -19,9 +19,7 @@ function MusicPlayer(songs: any) {
 	const audioRef = useRef() as MutableRefObject<HTMLAudioElement>;
 	const { musicList } = useMusicPlayer();
 
-	// useEffect(()=> {
-	// 	console.log("yes",musicList)
-	// },[musicList])
+
 
 	useEffect(() => {
 		if (isPlaying) {
@@ -132,6 +130,21 @@ function MusicPlayer(songs: any) {
 			}
 		}
 	}
+
+	function handleMessage(event: any) {
+		if (event.data.message === "Add To Recent") {
+			setIsPlaying(prevIsPlaying => !prevIsPlaying);
+
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('message', handleMessage);
+
+		return () => {
+			window.removeEventListener('message', handleMessage);
+		}
+	}, [])
 
 
 	return (

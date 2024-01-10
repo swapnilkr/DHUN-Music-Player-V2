@@ -185,7 +185,6 @@ function AlbumPlaylist() {
 
     function handleMessage(event:any) {
         if (event.data === "Play All") {
-            console.log("ashh")
             setMusicList(selectedList)
         } 
     }
@@ -197,7 +196,7 @@ function AlbumPlaylist() {
         return () => {
             window.removeEventListener('message', handleMessage);
         }
-    }, [])
+    }, [selectedList])
 
     function handleClick(event: any, index: any) {
         let clickedSong = [];
