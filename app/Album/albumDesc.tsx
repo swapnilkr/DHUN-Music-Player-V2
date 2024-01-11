@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation'
 
 interface Artist {
@@ -18,9 +18,11 @@ function AlbumDesc() {
 
     const searchParams = useSearchParams()
     const choosedSinger = searchParams.get('singer')
+    const showDescWebview = searchParams.get('desc')
 
     const [selectedSinger, setSelectedSinger] = useState<Artist | null>();
     const [isFollowing, setIsFollowing] = useState(false);
+    const [showDesc, setShowDesc] = useState<string | null>('true');
 
     let singerInfo = [
         {
@@ -132,6 +134,7 @@ function AlbumDesc() {
     }, [choosedSinger])
 
     useEffect(() => {
+        setShowDesc(showDescWebview === 'no' ? 'false' : 'true');
         const storedIsFollowing = localStorage.getItem('isFollowing');
         if (storedIsFollowing !== null) {
             setIsFollowing(JSON.parse(storedIsFollowing));
@@ -144,45 +147,51 @@ function AlbumDesc() {
         localStorage.setItem('isFollowing', JSON.stringify(newIsFollowing));
     };
 
-    function handlePlayAll(e:any) {
+    function handlePlayAll(e: any) {
         window.postMessage('Play All', '*')
 
     }
 
     return (
         <>
-            <div className="jumbotron" >
-                <div className="jumbotron-image">
-                    <img src={selectedSinger?.imageUrl} />
-                </div>
-                <div className="jumbotron-detail">
-                    <div className="descriptive-part">
-                        <div className="song-name-main">
-                            <h1>{selectedSinger?.name}</h1>
-                        </div>
-                        <div className="followers">
-                            {selectedSinger?.follower}
-                        </div>
-                        <p className="author">{selectedSinger?.band}</p>
-                        <p className="desc">
-                            {selectedSinger?.desc}
-                        </p>
+            {showDesc === 'true' ?
+
+                <div className="jumbotron" >
+                    <div className="jumbotron-image">
+                        <img src={selectedSinger?.imageUrl} />
                     </div>
-                    <div className="action-part">
-                        <div className="btns">
-                            <button onClick={(e)=> handlePlayAll(e)}>Play All</button>
-                            <span onClick={(e) => handleFollow(e)}>
-                                <button>      
-                                    {isFollowing ? 'Following' : 'Follow'}
-                                </button>
-                            </span>
+                    <div className="jumbotron-detail">
+                        <div className="descriptive-part">
+                            <div className="song-name-main">
+                                <h1>{selectedSinger?.name}</h1>
+                            </div>
+                            <div className="followers">
+                                {selectedSinger?.follower}
+                            </div>
+                            <p className="author">{selectedSinger?.band}</p>
+                            <p className="desc">
+                                {selectedSinger?.desc}
+                            </p>
                         </div>
-                        <p>
-                            {selectedSinger?.track}
-                        </p>
+                        <div className="action-part">
+                            <div className="btns">
+                                <button onClick={(e) => handlePlayAll(e)}>Play All</button>
+                                <span onClick={(e) => handleFollow(e)}>
+                                    <button>
+                                        {isFollowing ? 'Following' : 'Follow'}
+                                    </button>
+                                </span>
+                            </div>
+                            <p>
+                                {selectedSinger?.track}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                :
+                <></>
+            }
+
         </>
     )
 

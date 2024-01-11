@@ -1,3 +1,6 @@
+import Link from 'next/link'
+
+
 function MusicTheme() {
 
     return (
@@ -8,55 +11,83 @@ function MusicTheme() {
                         <div id="div2">
                             <div id="div3">
                                 <img src="/website_logo.svg" />
-                                    <p>Stations</p>
+                                <p>Stations</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="theme-main">
-                    <div className="theme-content">
-                        <img src="/music themes/chill.jpg" />
+                    <Link href="/Album?list=1&singer=coldplay&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/chill.jpg" />
                             <p>Chill</p>
-                    </div>
-                    <div className="theme-content">
-                        <img src="/music themes/rock.jpg" />
+                        </div>
+                    </Link>
+                    <Link href="/Album?list=2&singer=adele&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/rock.jpg" />
                             <p>Rock</p>
-                    </div>
-                    <div className="theme-content">
-                        <img src="/music themes/love.jpg" />
+                        </div>
+                    </Link>
+                    <Link href="/Album?list=3&singer=dr&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/love.jpg" />
                             <p>Love</p>
-                    </div>
-                    <div className="theme-content">
-                        <img src="/music themes/pop.jpg" />
+                        </div>
+                    </Link>
+                    <Link href="/Album?list=1&singer=coldplay&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/pop.jpg" />
                             <p>Pop</p>
-                    </div>
-                    <div className="theme-content">
-                        <img src="/music themes/retro.jpg" />
+                        </div>
+                    </Link>
+                    <Link href="/Album?list=3&singer=dr&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/retro.jpg" />
                             <p>Retro</p>
-                    </div>
-                    <div className="theme-content">
-                        <img src="/music themes/workout.jpg" />
+                        </div>
+                    </Link>
+                    <Link href="/Album?list=2&singer=adele&desc=no">
+
+                        <div className="theme-content">
+                            <img src="/music themes/workout.jpg" />
                             <p>Workout</p>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className="music-themes-2">
-                <div className="outer-div">
-                    <div className="inner-div">
-                        <span>Party</span>
-                    </div>
-                </div>
-                <div className="outer-div">
-                    <div className="inner-div">
-                        <span>Electronic</span>
-                    </div>
-                </div>
-                <div className="outer-div">
-                    <div className="inner-div">
+                <Link href="/Album?list=2&singer=adele&desc=no">
 
-                        <span>Road</span>
+                    <div className="outer-div1">
+                        <div className="inner-div">
+                            <span>Party</span>
+                        </div>
                     </div>
-                </div>
+                </Link>
+                <Link href="/Album?list=1&singer=coldplay&desc=no">
+
+                    <div className="outer-div2">
+                        <div className="inner-div">
+                            <span>Electronic</span>
+                        </div>
+                    </div>
+                </Link>
+                <Link href="/Album?list=3&singer=dr&desc=no">
+
+                    <div className="outer-div3">
+
+                        <div className="inner-div">
+
+                            <span>Road</span>
+                        </div>
+                    </div>
+                </Link>
             </div>
         </>
     )
