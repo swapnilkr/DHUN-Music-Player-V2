@@ -841,7 +841,7 @@ label[for="more"]:checked~input {
   position: fixed;
   right: 4%;
   top: 14%;
-  background-color: var(--music-themes-background-image);
+  background: linear-gradient(90deg, #2980b9, #c0392b);
   width: 10%;
   height: auto;
   display: flex;
