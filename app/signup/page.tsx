@@ -16,30 +16,32 @@ const Signup = () => {
         });
 
         if (response.ok) {
-            // Redirect to the login page or another page on successful signup
             console.log('Signup successful');
         } else {
-            // Handle signup error, show a message or redirect to the signup page
             console.error('Signup failed');
         }
     };
 
     return (
-        <div>
-            <h1>Signup</h1>
-            <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handleSignup}>Signup</button>
+        <div className="login-box">
+            <h2>Sign Up</h2>
+            <form>
+                <div className="user-box">
+                    <input type="text" name="" required={true} />
+                    <label>Username</label>
+                </div>
+                <div className="user-box">
+                    <input type="password" name="" required={true} />
+                    <label>Password</label>
+                </div>
+                <div className='submit-btn'>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </div>
+            </form>
         </div>
     );
 };

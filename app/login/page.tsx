@@ -1,10 +1,11 @@
 'use client'
 import { useState } from 'react';
-
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
 
     const handleLogin = async () => {
         // Making a POST request to /api/auth/login route with the email and password
@@ -17,6 +18,7 @@ const Login = () => {
         });
 
         if (response.ok) {
+            // Redirect to the dashboard or another page on successful login
             console.log('Login successful');
         } else {
             // Handle login error, show a message or redirect to the login page
@@ -25,21 +27,25 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handleLogin}>Login</button>
+        <div className="login-box">
+            <h2>Login</h2>
+            <form>
+                <div className="user-box">
+                    <input type="text" name="" required={true} />
+                        <label>Username</label>
+                </div>
+                <div className="user-box">
+                    <input type="password" name="" required={true} />
+                        <label>Password</label>
+                </div>
+                <div className='submit-btn'>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </div>
+            </form>
         </div>
     );
 };
