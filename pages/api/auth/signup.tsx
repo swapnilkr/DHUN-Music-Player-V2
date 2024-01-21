@@ -6,7 +6,7 @@ import { setTokenCookie } from '../../../utils/auth';
 
 export default async function handler(req: any, res: any) {
     await dbConnect();
-
+    
     if (req.method === 'POST') {
         const { email, password, name } = req.body;
 

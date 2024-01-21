@@ -42,20 +42,22 @@ const Login = () => {
         if (response.ok) {
             console.log('Login successful');
             showSuccessToast();
-            router.push('/')
+            setTimeout(() => {
+                router.push('/')
+            }, 2000)
         } else {
             showErrorToast();
             console.error('Login failed');
         }
     };
 
-    const handleGoogleLogin = async (e:any) => {
+    const handleGoogleLogin = async (e: any) => {
         await signIn('google');
     };
 
     return (
         <>
-            <ToastContainer />
+            <ToastContainer autoClose={2000} />
             <div className="login-box">
                 <h2>Login</h2>
                 <form>
@@ -83,7 +85,7 @@ const Login = () => {
                             <span></span>
                             Submit
                         </div>
-                        <button className="button-86" role="button" onClick={(e)=> handleGoogleLogin(e)}>Login With Google</button>
+                        <button className="button-86" role="button" onClick={(e) => handleGoogleLogin(e)}>Login With Google</button>
                     </div>
                 </form>
             </div>

@@ -44,7 +44,9 @@ const Signup = () => {
         if (response.ok) {
             showSuccessToast();
             console.log('Signup successful');
-            router.push('/')
+            setTimeout(() => {
+                router.push('/')
+            },2000)
         } else {
             showErrorToast();
             console.error('Signup failed');
@@ -57,7 +59,7 @@ const Signup = () => {
 
     return (
         <>
-            <ToastContainer />
+            <ToastContainer autoClose={2000}/>
             <div className="login-box">
                 <h2>Sign Up</h2>
                 <form>
