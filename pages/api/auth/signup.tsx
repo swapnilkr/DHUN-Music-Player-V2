@@ -6,7 +6,7 @@ export default async function handler(req:any, res:any) {
     await dbConnect();
 
     if (req.method === 'POST') {
-        const { email, password } = req.body;
+        const { email, password, name } = req.body;
 
         try {
             const existingUser = await User.findOne({ email });
@@ -16,7 +16,7 @@ export default async function handler(req:any, res:any) {
             }
 
             const hashedPassword = await bcrypt.hash(password, 10);
-            const user = new User({ email, password:hashedPassword });
+            const user = new User({ email, password:hashedPassword, name });
             await user.save();
 
             return res.status(201).json({ message: 'User created successfully' });

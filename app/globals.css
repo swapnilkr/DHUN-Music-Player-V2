@@ -2302,7 +2302,7 @@ footer {
 
 @keyframes btn-anim1 {
   0% {
-    left: 100%;
+    left: -100%;
   }
   50%,100% {
     left: 100%;
