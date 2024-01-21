@@ -1,8 +1,10 @@
 import dbConnect from '../../../utils/dbConnect';
 import User from '../../../models/Users';
 import bcrypt from 'bcrypt';
+import { setTokenCookie } from '../../../utils/auth';
 
-export default async function handler(req:any, res:any) {
+
+export default async function handler(req: any, res: any) {
     await dbConnect();
 
     if (req.method === 'POST') {
@@ -16,8 +18,12 @@ export default async function handler(req:any, res:any) {
             }
 
             const hashedPassword = await bcrypt.hash(password, 10);
-            const user = new User({ email, password:hashedPassword, name });
+            const user = new User({ email, password: hashedPassword, name });
             await user.save();
+
+            // TODO Generate a session token and set it as a cookie
+            const token = 'your_generated_token'; // Replace with your actual token
+            setTokenCookie(res, token);
 
             return res.status(201).json({ message: 'User created successfully' });
         } catch (error) {

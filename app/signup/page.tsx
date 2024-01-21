@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation'
+
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const router = useRouter()
 
 
     const showSuccessToast = () => {
@@ -40,10 +44,15 @@ const Signup = () => {
         if (response.ok) {
             showSuccessToast();
             console.log('Signup successful');
+            router.push('/')
         } else {
             showErrorToast();
             console.error('Signup failed');
         }
+    };
+
+    const handleGoogleLogin = async (e:any) => {
+        await signIn('google');
     };
 
     return (
@@ -76,12 +85,15 @@ const Signup = () => {
                             required={true} />
                         <label>Password</label>
                     </div>
-                    <div className='submit-btn' onClick={(e) => handleSignup(e)}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Submit
+                    <div className='flex space-x-8'>
+                        <div className='submit-btn' onClick={(e) => handleSignup(e)}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Submit
+                        </div>
+                        <button className="button-86" role="button" onClick={(e)=> handleGoogleLogin(e)}>Login With Google</button>
                     </div>
                 </form>
             </div>

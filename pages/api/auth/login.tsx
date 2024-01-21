@@ -1,6 +1,7 @@
 import dbConnect from '../../../utils/dbConnect';
 import User from '../../../models/Users';
 import bcrypt from 'bcrypt';
+import { setTokenCookie } from '../../../utils/auth';
 
 
 export default async function handler(req: any, res: any) {
@@ -11,12 +12,14 @@ export default async function handler(req: any, res: any) {
 
         try {
             const user = await User.findOne({ email });
-            console.log("qswap", user,bcrypt.compare(password, user.password))
+
             if (!user || !(await bcrypt.compare(password, user.password))) {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }
 
-            // Implement JWT token generation here if needed
+            //TODO Generate a session token and set it as a cookie
+            const token = 'your_generated_token'; // Replace with your actual token
+            setTokenCookie(res, token);
 
             return res.status(200).json({ message: 'Login successful' });
         } catch (error) {
