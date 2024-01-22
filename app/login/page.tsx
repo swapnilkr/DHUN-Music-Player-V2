@@ -52,7 +52,7 @@ const Login = () => {
     };
 
     const handleGoogleLogin = async (e: any) => {
-        await signIn('google');
+        await signIn('google', { callbackUrl: window.location.origin+'/' });
     };
 
     return (
