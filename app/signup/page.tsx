@@ -45,7 +45,7 @@ const Signup = () => {
             showSuccessToast();
             console.log('Signup successful');
             setTimeout(() => {
-                router.push('/')
+                router.push('/login')
             },2000)
         } else {
             showErrorToast();

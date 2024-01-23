@@ -30,6 +30,11 @@ const Login = () => {
         });
     };
 
+    function handleSession() {
+        window.localStorage.setItem('loggedIn', 'true');
+        window.localStorage.setItem('email', email);
+    }
+
     const handleLogin = async (e: any) => {
         const response = await fetch('/api/auth/login', {
             method: 'POST',
@@ -42,6 +47,7 @@ const Login = () => {
         if (response.ok) {
             console.log('Login successful');
             showSuccessToast();
+            handleSession();
             setTimeout(() => {
                 router.push('/')
             }, 2000)

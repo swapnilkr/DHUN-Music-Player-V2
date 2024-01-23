@@ -1,8 +1,21 @@
+'use-client'
+
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
+import { useSession } from "next-auth/react"
+import { useEffect } from 'react';
+
 
 
 export default function NavBar() {
+    const { data: session, status } = useSession()
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            console.log("qswap",session?.user?.email)
+          }
+    },[session])
+ 
     return (
         <>
             <html>
