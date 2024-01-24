@@ -1,15 +1,18 @@
 'use-client'
+import { signOut } from "next-auth/react"
 
-function signout() {
+
+function Signout() {
 
     function handleSignout() {
         window.localStorage.setItem('loggedIn', 'false');
         window.localStorage.removeItem('email');
+        signOut();
     }
     return (<>
-        <div onClick={handleSignout}>Signout</div>
+        <div className="signout-btn" onClick={handleSignout}>Signout</div>
     </>)
 
 }
 
-export default signout;
+export default Signout;

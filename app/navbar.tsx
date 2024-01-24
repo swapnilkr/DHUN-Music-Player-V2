@@ -2,20 +2,30 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSession } from "next-auth/react"
-import { useEffect } from 'react';
-
+import { signOut, useSession } from "next-auth/react"
+import { useEffect, useState } from 'react';
+import Signout from './signout/page';
 
 
 export default function NavBar() {
     const { data: session, status } = useSession()
+    const [isFloating, setIsFloating] = useState(false);
+
+    const handleHover = () => {
+        setIsFloating(true);
+    };
+
+    const handleUnhover = () => {
+        setIsFloating(false);
+    };
+
 
     useEffect(() => {
         if (status === "authenticated") {
-            console.log("qswap",session?.user?.email)
-          }
-    },[session])
- 
+            console.log("qswap", session?.user, status)
+        }
+    }, [session])
+
     return (
         <>
             <html>
@@ -66,9 +76,33 @@ export default function NavBar() {
                             <Image src='/bell_icon.svg' alt='bell-icon' height={50} width={50} />
 
                         </div>
+                        <div className="profile-picture flex">
+                            <div className='flex items-center'>
+                                <Image src="/profile_picture.svg" alt='profile-picture' height={50} width={50} />
+                                <div style={{ marginTop: "5px" }}>
+                                    {status === 'authenticated' ?
+                                        <div className='flex'>
+                                            <span className={``} style={{ transition: " opacity 0.5s ease" }}>Profile: &nbsp;</span>
+                                            <div className='profile-name'>{session?.user?.name?.split(" ")[0]}</div>
+                                            <Signout />
+                                        </div>
+                                        :
+                                        <>
+                                            <span className='signout-btn' style={{margin: "0px 12px"}}>
+                                                <Link href="/signup">
+                                                    Signup
+                                                </Link>
+                                            </span>
+                                            <span className='signout-btn'>
+                                                <Link href="/login">
+                                                    Login
+                                                </Link>
+                                            </span>
+                                        </>
+                                    }
+                                </div>
 
-                        <div className="profile-picture">
-                            <Image src="/profile_picture.svg" alt='profile-picture' height={50} width={50} />
+                            </div>
                         </div>
                     </nav>
                 </body>

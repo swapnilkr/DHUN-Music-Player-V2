@@ -76,7 +76,7 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
   padding-left: 5%;
@@ -2452,4 +2452,44 @@ input:-webkit-autofill + label {
 .button-86:active::after {
   transition: 0s;
   transform: translate(0, 5%);
+}
+
+/* .floating-div {
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease-in-out; 
+}
+
+.float-right {
+  transform: translateX(25px); 
+} */
+
+.profile-info {
+  opacity: 1;
+}
+
+.profile-name,
+.signout-btn {
+  background-color: #fa725a;
+  border-radius: 5px;
+  padding: 0px 10px;
+  color: black;
+  border: 1px solid white;  
+}
+
+.profile-name {
+  margin-right: 12px;
+  text-transform: capitalize;
+}
+
+.signout-btn:hover {
+    transform: scale(1.2) rotate(10deg);
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
 }
