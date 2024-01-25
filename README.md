@@ -11,16 +11,15 @@
 
 <h2>Project Walkthrough:</h2>
 
-https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/38c32ac5-58e8-43d3-97b7-6e79b5e7a663
+https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/e008b0f1-8f7e-44c2-881a-097d2ee44db4
 
-https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/54518dc2-76ea-4332-b004-d738d1d1dcdf
+https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/9bca8be7-cbd7-45e3-ad52-24e4ac764f3c
 
-https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/dec5535a-9a70-4118-89b1-37281fe0395a
+https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/a6441865-a7f8-44bf-afe3-c9397cf29365
 
-https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/c223db1d-6d39-475e-9257-baadfa952382
+https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/f6e30d5d-df81-4ed6-9461-cc2d1caebc0a
 
-https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/7473ea72-3a70-4339-b7e4-04b7b9046831
-
+https://github.com/swapnilkr/DHUN-Music-Player-V2/assets/49485584/cb87d721-775a-4316-88d2-993f7045525d
   
 <h2>🧐 Features</h2>
 
