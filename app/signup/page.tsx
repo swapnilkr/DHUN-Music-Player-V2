@@ -54,7 +54,7 @@ const Signup = () => {
     };
 
     const handleGoogleLogin = async (e:any) => {
-        await signIn('google', { callbackUrl: window.location.origin+'/' });
+        await signIn('google', { callbackUrl: window.location.origin+'/login' });
     };
 
     return (

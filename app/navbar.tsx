@@ -10,6 +10,8 @@ import Signout from './signout/page';
 export default function NavBar() {
     const { data: session, status } = useSession()
     const [isFloating, setIsFloating] = useState(false);
+    const [name, setName] = useState('');
+
 
     const handleHover = () => {
         setIsFloating(true);
@@ -23,8 +25,26 @@ export default function NavBar() {
     useEffect(() => {
         if (status === "authenticated") {
             console.log("qswap", session?.user, status)
+        } else if(localStorage.getItem('loggedIn') === 'true') {
+            handleFetchUserName(localStorage.getItem('email'))
         }
     }, [session])
+
+
+    const handleFetchUserName = async (email:any) => {
+        try {
+            const response = await fetch(`/api/getUserName?email=${email}`);
+            const data = await response.json();
+
+            if (response.ok) {
+                setName(data.name);
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error('An error occurred', error);
+        }
+    };
 
     return (
         <>
@@ -80,7 +100,7 @@ export default function NavBar() {
                             <div className='flex items-center'>
                                 <Image src="/profile_picture.svg" alt='profile-picture' height={50} width={50} />
                                 <div style={{ marginTop: "5px" }}>
-                                    {status === 'authenticated' ?
+                                    {(status === 'authenticated') ?
                                         <div className='flex'>
                                             <span className={``} style={{ transition: " opacity 0.5s ease" }}>Profile: &nbsp;</span>
                                             <div className='profile-name'>{session?.user?.name?.split(" ")[0]}</div>
@@ -88,17 +108,30 @@ export default function NavBar() {
                                         </div>
                                         :
                                         <>
-                                            <span className='signout-btn' style={{margin: "0px 12px"}}>
-                                                <Link href="/signup">
-                                                    Signup
-                                                </Link>
-                                            </span>
-                                            <span className='signout-btn'>
-                                                <Link href="/login">
-                                                    Login
-                                                </Link>
-                                            </span>
+                                            {
+                                                localStorage.getItem('loggedIn') === 'true' ?
+                                                    <div className='flex'>
+                                                        <span className={``} style={{ transition: " opacity 0.5s ease" }}>Profile: &nbsp;</span>
+                                                        <div className='profile-name'>{name}</div>
+                                                        <Signout />
+                                                    </div>
+                                                    :
+
+                                                    <>
+                                                        <span className='signout-btn' style={{ margin: "0px 12px" }}>
+                                                            <Link href="/signup">
+                                                                Signup
+                                                            </Link>
+                                                        </span>
+                                                        <span className='signout-btn'>
+                                                            <Link href="/login">
+                                                                Login
+                                                            </Link>
+                                                        </span>
+                                                    </>
+                                            }
                                         </>
+
                                     }
                                 </div>
 
