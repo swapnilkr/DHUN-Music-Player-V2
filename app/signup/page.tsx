@@ -23,7 +23,7 @@ const Signup = () => {
     };
 
     const showErrorToast = () => {
-        toast.error("Error in Signup", {
+        toast.error("You are registered user. Move to login page.", {
             data: {
                 title: "Error toast",
                 text: "This is an error message",
@@ -46,20 +46,24 @@ const Signup = () => {
             console.log('Signup successful');
             setTimeout(() => {
                 router.push('/login')
-            },2000)
+            }, 2000)
         } else {
             showErrorToast();
             console.error('Signup failed');
         }
     };
 
-    const handleGoogleLogin = async (e:any) => {
-        await signIn('google', { callbackUrl: window.location.origin+'/login' });
+    const handleGoogleLogin = async (e: any) => {
+        await signIn('google', { callbackUrl: window.location.origin + '/login' });
     };
+
+    const handleLogin = async(e:any) => {
+        router.push('/login')
+    }
 
     return (
         <>
-            <ToastContainer autoClose={2000}/>
+            <ToastContainer autoClose={2000} />
             <div className="login-box">
                 <h2>Sign Up</h2>
                 <form>
@@ -95,8 +99,12 @@ const Signup = () => {
                             <span></span>
                             Submit
                         </div>
-                        <button className="button-86" role="button" onClick={(e)=> handleGoogleLogin(e)}>Login With Google</button>
+                        <button className="button-86" role="button" onClick={(e) => handleGoogleLogin(e)}>Login With Google</button>
                     </div>
+                    <button className="btn-class-name" onClick={(e) => handleLogin(e)}>
+                        <span className="back"></span>
+                        <span className="front"><span color='white'>Login</span></span>
+                    </button>
                 </form>
             </div>
         </>

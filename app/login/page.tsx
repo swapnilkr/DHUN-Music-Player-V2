@@ -22,7 +22,7 @@ const Login = () => {
     };
 
     const showErrorToast = () => {
-        toast.error("Error in Login", {
+        toast.error("Login failed. Check credentials.", {
             data: {
                 title: "Error toast",
                 text: "This is an error message",
