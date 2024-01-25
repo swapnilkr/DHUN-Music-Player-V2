@@ -25,13 +25,13 @@ export default function NavBar() {
     useEffect(() => {
         if (status === "authenticated") {
             console.log("qswap", session?.user, status)
-        } else if(localStorage.getItem('loggedIn') === 'true') {
-            handleFetchUserName(localStorage.getItem('email'))
+        } else if (window.localStorage.getItem('loggedIn') === 'true') {
+            handleFetchUserName(window.localStorage.getItem('email'))
         }
     }, [session])
 
 
-    const handleFetchUserName = async (email:any) => {
+    const handleFetchUserName = async (email: any) => {
         try {
             const response = await fetch(`/api/getUserName?email=${email}`);
             const data = await response.json();
@@ -108,28 +108,35 @@ export default function NavBar() {
                                         </div>
                                         :
                                         <>
-                                            {
-                                                localStorage.getItem('loggedIn') === 'true' ?
-                                                    <div className='flex'>
-                                                        <span className={``} style={{ transition: " opacity 0.5s ease" }}>Profile: &nbsp;</span>
-                                                        <div className='profile-name'>{name}</div>
-                                                        <Signout />
-                                                    </div>
-                                                    :
+                                            {typeof window !== 'undefined' ?
+                                                <>
+                                                    {
+                                                        window?.localStorage?.getItem('loggedIn') === 'true' ?
+                                                            <div className='flex'>
+                                                                <span className={``} style={{ transition: " opacity 0.5s ease" }}>Profile: &nbsp;</span>
+                                                                <div className='profile-name'>{name}</div>
+                                                                <Signout />
+                                                            </div>
+                                                            :
 
-                                                    <>
-                                                        <span className='signout-btn' style={{ margin: "0px 12px" }}>
-                                                            <Link href="/signup">
-                                                                Signup
-                                                            </Link>
-                                                        </span>
-                                                        <span className='signout-btn'>
-                                                            <Link href="/login">
-                                                                Login
-                                                            </Link>
-                                                        </span>
-                                                    </>
+                                                            <>
+                                                                <span className='signout-btn' style={{ margin: "0px 12px" }}>
+                                                                    <Link href="/signup">
+                                                                        Signup
+                                                                    </Link>
+                                                                </span>
+                                                                <span className='signout-btn'>
+                                                                    <Link href="/login">
+                                                                        Login
+                                                                    </Link>
+                                                                </span>
+                                                            </>
+                                                    }
+                                                </>
+                                                :
+                                                <></>
                                             }
+
                                         </>
 
                                     }
