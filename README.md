@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://socialify.git.ci/swapnilkr/DHUN-Music-Player-V2/image?language=1&amp;owner=1&amp;name=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
 
-<p id="description">This project is a web-based audio music player developed using Next.js. It includes authentication features using OAuth and provides users with the ability to store and manage their recent and favorite songs.</p>
+<p id="description">This project is a web-based audio music player developed using Next.js. It includes authentication features using nextAuth and mongoose and provides users with the ability to store and manage their recent and favorite songs.</p>
 
 
 <h2>🚀 Demo</h2>
