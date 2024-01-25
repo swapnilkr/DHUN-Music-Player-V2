@@ -6,20 +6,27 @@ import AlbumAsideSec1 from './albumAsideSec1';
 import AlbumAsideSec2 from './albumAsideSec2';
 import MusicPlayer from '../AudioPlayer';
 import { MusicPlayerProvider } from '../MusicPlayerProvider';
+import { SessionProvider } from 'next-auth/react';
+import { Session } from 'next-auth'
 
-function page() {
+
+function page({ session }:any) {
     return (
         <>
-            <span className='page2'>
-                <MusicPlayerProvider>
-                    <NavBar />
-                    <main>
-                        <AlbumAsideSec1 />
-                        <AlbumAsideSec2 />
-                    </main>
-                    <MusicPlayer songs={''} />
-                </MusicPlayerProvider>
-            </span>
+            <SessionProvider session={session}>
+
+                <span className='page2'>
+                    <MusicPlayerProvider>
+                        <NavBar />
+                        <main>
+                            <AlbumAsideSec1 />
+                            <AlbumAsideSec2 />
+                        </main>
+                        <MusicPlayer songs={''} />
+                    </MusicPlayerProvider>
+                </span>
+            </SessionProvider>
+
         </>
     )
 }

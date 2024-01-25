@@ -17,8 +17,8 @@ interface Artist {
 function AlbumDesc() {
 
     const searchParams = useSearchParams()
-    const choosedSinger = searchParams.get('singer')
-    const showDescWebview = searchParams.get('desc')
+    const choosedSinger = searchParams?.get('singer')
+    const showDescWebview = searchParams?.get('desc')
 
     const [selectedSinger, setSelectedSinger] = useState<Artist | null>();
     const [isFollowing, setIsFollowing] = useState(false);
