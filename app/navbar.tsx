@@ -64,7 +64,7 @@ export default function NavBar() {
                     <link rel="icon" type="image/x-icon" href="/musical-note.png" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <title>Dhun Music Player</title>
-                    <script src="https://kit.fontawesome.com/2d9b67a497.js" crossOrigin="anonymous"></script>
+                    <script src="https://kit.fontawesome.com/2d9b67a497.js" crossOrigin="anonymous" async></script>
                 </head>
                 <body>
                     <ToastContainer autoClose={10000} />
