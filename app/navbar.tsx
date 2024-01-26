@@ -5,26 +5,37 @@ import Link from 'next/link';
 import { signOut, useSession } from "next-auth/react"
 import { useEffect, useState } from 'react';
 import Signout from './signout/page';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function NavBar() {
     const { data: session, status } = useSession()
-    const [isFloating, setIsFloating] = useState(false);
     const [name, setName] = useState('');
 
 
-    const handleHover = () => {
-        setIsFloating(true);
+   const showInfoToast = () => {
+        toast.info("All the songs provided in this music player are sourced from NoCopyrightSounds (NCS)", {
+            data: {
+                title: "Error toast",
+                text: "This is an error message",
+            },
+        });
     };
 
-    const handleUnhover = () => {
-        setIsFloating(false);
-    };
+    useEffect(() =>{
+        if(window.localStorage.getItem('showToast') !== 'true') {
+            setTimeout(() => {
+                showInfoToast();
 
+            },2000)
+            window.localStorage.setItem('showToast','true');
+        }
+    },[])
 
     useEffect(() => {
         if (status === "authenticated") {
-            console.log("qswap", session?.user, status)
+            // console.log("qswap", session?.user, status)
         } else if (window.localStorage.getItem('loggedIn') === 'true') {
             handleFetchUserName(window.localStorage.getItem('email'))
         }
@@ -56,6 +67,7 @@ export default function NavBar() {
                     <script src="https://kit.fontawesome.com/2d9b67a497.js" crossOrigin="anonymous"></script>
                 </head>
                 <body>
+                    <ToastContainer autoClose={10000} />
                     <nav className="navigation-bar">
                         <Link href="/">
                             <div className="title-combo">
