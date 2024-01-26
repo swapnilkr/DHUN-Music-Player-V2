@@ -1,3 +1,4 @@
+'use-client'
 import React, { MutableRefObject, useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { useMusicPlayer } from './MusicPlayerProvider';
