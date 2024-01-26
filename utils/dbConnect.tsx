@@ -3,7 +3,7 @@ import mongoose, { ConnectOptions } from 'mongoose';
 const connectDB = async () => {
     try {
         //TODO
-        await mongoose.connect('mongodb://127.0.0.1:27017/trash', {
+        await mongoose.connect(process.env.MONGO_URL || '', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         } as ConnectOptions);
