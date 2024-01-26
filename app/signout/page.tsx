@@ -1,4 +1,4 @@
-'use-client'
+'use client'
 import { signOut } from "next-auth/react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
