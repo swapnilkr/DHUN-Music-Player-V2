@@ -43,7 +43,7 @@ const Signup = () => {
 
         if (response.ok) {
             showSuccessToast();
-            console.log('Signup successful');
+          
             setTimeout(() => {
                 router.push('/login')
             }, 2000)

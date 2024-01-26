@@ -31,11 +31,6 @@ function MusicPlayer(songs: any) {
 	}, [isPlaying, currentSongIndex]);
 
 	useEffect(() => {
-		// randomBgColor();
-		console.log(audioRef, audioRef.current)
-	}, [currentSongIndex])
-
-	useEffect(() => {
 		audioRef.current.volume = volume;
 	}, [volume]);
 
@@ -66,7 +61,7 @@ function MusicPlayer(songs: any) {
 		if (isShuffle) {
 			setCurrentSongIndex(getRandomIndex());
 		} else {
-			console.log(musicList.length, musicList)
+	
 			setCurrentSongIndex((prevIndex) =>
 				direction === 'next' ? (prevIndex + 1) % musicList.length : (prevIndex - 1 + musicList.length) % musicList.length
 			);
@@ -77,11 +72,11 @@ function MusicPlayer(songs: any) {
 		return Math.floor(Math.random() * musicList.length);
 	};
 
-	const repeatHandler = () => {
+	const repeatHandler = (e:any) => {
 		setIsRepeat(!isRepeat);
 	};
 
-	const shuffleHandler = () => {
+	const shuffleHandler = (e:any) => {
 		setIsShuffle(!isShuffle);
 	};
 
@@ -113,7 +108,7 @@ function MusicPlayer(songs: any) {
 	// 	bg_colour.style.background = bgColor;
 	// }
 	useEffect(() => {
-		console.log("set", musicList, musicList[0])
+	
 		setFavorites(JSON.parse(window.localStorage.getItem('favList') || '[]'))
 	}, [musicList])
 
@@ -194,7 +189,7 @@ function MusicPlayer(songs: any) {
 					{/* <audio src="media\Coldplay - Yellow.mp3" className="audio" controls></audio> */}
 
 					<div className="controls">
-						<div onClick={shuffleHandler} style={{ filter: isShuffle ? 'drop-shadow(0 4px 1px black' : '' }}>
+						<div onClick={(e)=>shuffleHandler(e)} style={{ filter: isShuffle ? 'drop-shadow(0 4px 1px black' : '' }}>
 							<i className="fas fa-random" />
 						</div>
 						<div className="prev-track" onClick={() => skipTrackHandler('prev')}>
@@ -212,7 +207,7 @@ function MusicPlayer(songs: any) {
 							<i className="fas fa-step-forward">
 							</i>
 						</div>
-						<div onClick={repeatHandler} style={{ filter: isRepeat ? 'drop-shadow(0 4px 1px black' : '' }}>
+						<div onClick={(e)=>repeatHandler(e)} style={{ filter: isRepeat ? 'drop-shadow(0 4px 1px black' : '' }}>
 							<i className="fas fa-redo">
 							</i>
 						</div>

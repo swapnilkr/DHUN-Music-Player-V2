@@ -45,7 +45,7 @@ const Login = () => {
         });
 
         if (response.ok) {
-            console.log('Login successful');
+         
             showSuccessToast();
             handleSession();
             setTimeout(() => {

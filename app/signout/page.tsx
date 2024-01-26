@@ -15,7 +15,7 @@ function Signout() {
         });
     };
 
-    function handleSignout() {
+    function handleSignout(e:any) {
         window.localStorage.setItem('loggedIn', 'false');
         window.localStorage.removeItem('email');
         signOut();
@@ -23,7 +23,7 @@ function Signout() {
     }
     return (<>
         <ToastContainer autoClose={2000}/>
-        <div className="signout-btn" onClick={handleSignout}>Signout</div>
+        <div className="signout-btn" onClick={(e)=>handleSignout(e)}>Signout</div>
     </>)
 
 }
