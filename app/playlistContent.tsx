@@ -240,7 +240,7 @@ function PlaylistContent() {
                     showFavList ?
                         <>
                             {favMusicPlaylist.map((key: any, index: any) => (
-                                <div className="playlist-item" onClick={(e) => handleClick(e, index)}>
+                                <div key={index} className="playlist-item" onClick={(e) => handleClick(e, index)}>
                                     <div className="left-content">
                                         <div style={{ marginRight: "4px" }}>
                                             {index + 1}
@@ -275,7 +275,7 @@ function PlaylistContent() {
 
                         <>
                             {playlistMusic.map((key, index) => (
-                                <div className="playlist-item" onClick={(e) => handleClick(e, index)}>
+                                <div key={index} className="playlist-item" onClick={(e) => handleClick(e, index)}>
                                     <div className="left-content">
                                         <div style={{ marginRight: "4px" }}>
                                             {index + 1}

@@ -29,9 +29,9 @@ function SimilarBrand() {
                 </div>
                 <>
                     <div className="list">
-                        {brandInfo.map((item) => (
+                        {brandInfo.map((item,index) => (
 
-                            <div className="list-item">
+                            <div key={index} className="list-item">
                                 <div>
                                     <img src={item.imgSrc} />
                                     <div className="play-btn">

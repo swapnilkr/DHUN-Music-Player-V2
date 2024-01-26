@@ -8,7 +8,7 @@ import { useSearchParams } from 'next/navigation'
 function AlbumPlaylist() {
 
     const searchParams = useSearchParams()
-    const choosedPlaylist = searchParams.get('list')
+    const choosedPlaylist = searchParams?.get('list')
 
     const { setMusicList } = useMusicPlayer();
     const [selectedList, setSelectedList] = useState<any[]>([]);
@@ -231,7 +231,7 @@ function AlbumPlaylist() {
             <div className="playlist-items">
                 <>
                     {selectedList.map((list: any, index: any) => (
-                        <div className="playlist-item" onClick={(event) => handleClick(event, index)}>
+                        <div key={index} className="playlist-item" onClick={(event) => handleClick(event, index)}>
                             <div className="left">
                                 <div>
                                     {list.id}

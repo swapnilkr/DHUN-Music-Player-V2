@@ -85,7 +85,7 @@ function LatestRelease() {
                 <div className="latest-release-content">
                     {musicList.map((key, index) => (
 
-                        <div className="card" onClick={(e) => handleClick(e, index)}>
+                        <div key={index} className="card" onClick={(e) => handleClick(e, index)}>
                             <div className={`${index}`}>
                                 <img src={key.imageUrl} />
                                 <div className="play-button">

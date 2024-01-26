@@ -29,7 +29,7 @@ function RecentyPlayed() {
                 <div className="list">
                     <>
                         {recentSongs?.map((song, index) => (
-                            <div className="playlist-item">
+                            <div key={index} className="playlist-item">
                                 <div className="left">
                                     <div>
                                         {index+1}

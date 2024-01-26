@@ -84,7 +84,7 @@ function Instrumental() {
                 </h1>
                 <div className="language-content">
                     {instrumentalMusic.map((key,index) => (
-                        <div onClick={(e) => handleClick(e, index)}>
+                        <div key = {index} onClick={(e) => handleClick(e, index)}>
                             <img src={key.imageUrl} />
                             <p className='language-music-name'>{key.name}</p>
                             <p>{key.duration}</p>
