@@ -7,7 +7,7 @@
 
 <h2>🚀 Demo</h2>
 
-<a href="http://conneqtioncodeial.com">conneqtioncodeial.com</a>
+<a href="https://dhun-lyart.vercel.app/">Dhun.com</a>
 
 <h2>Project Walkthrough:</h2>
 
