@@ -134,7 +134,7 @@ function PlaylistContent() {
         {
             id: 16,
             name: 'In the forest',
-            imageUrl: '/latest_release/In The Forest.jpg',
+            imageUrl: '/Instrumental/Marcheur.jpg',
             audioUrl: '/latest_release/In The Forest.mp3',
             releaseDate: 'May 2023',
             duration: '01:59'
