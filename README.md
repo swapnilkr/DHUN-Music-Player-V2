@@ -32,13 +32,35 @@ Here're some of the project's best features:
 
 <h2>🛠️ Installation Steps:</h2>
 
-<p>1. Clone the project</p>
+<p>1. Clone this project</p>
 
-<p>2. cd dhun-music-player-v2</p>
+```
+https://github.com/swapnilkr/DHUN-Music-Player-V2.git
+```
 
-<p>3. npm run dev</p>
+<p>2. Change the directory</p>
 
-<p>4. Vist -&gt; http://localhost:3000/</p>
+```
+cd dhun-music-player-v2
+```
+
+<p>3. Install Dependency</p>
+
+```
+npm install
+```
+
+<p>4. Run this command</p>
+
+```
+npm run dev
+```
+
+<p>5. Vist -&gt;</p>
+
+```
+http://localhost:3000/
+```
 
 
 <h2>💻 Built with</h2>
