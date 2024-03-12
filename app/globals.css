@@ -1166,6 +1166,10 @@ footer {
     font-size: 11px !important;
   }
 
+  .login-box .user-box label {
+    font-size: 11px !important;
+  }
+
   .audio {
     margin-left: 38%;
   }
@@ -1364,6 +1368,18 @@ footer {
 
   .theme-main {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .theme-main a {
+    margin: 3%;
+    height: auto;
+    width: auto;
+    text-align: center;
+    border-radius: 100%;
   }
 
   /* theme content */
@@ -1433,6 +1449,10 @@ footer {
   }
 
   input {
+    font-size: 11px !important;
+  }
+
+  .login-box .user-box label {
     font-size: 11px !important;
   }
 
